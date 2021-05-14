@@ -5,5 +5,6 @@ A small cli tool to generate TOTP (Time-based One-time Password) tokens.
 ## Usage
 
 ```bash
-otpgen -s|--secretkey SECRETKEY
+ Usage of otpgen:
+   -s, --secretkey string   supply a valid TOTP secret key to generate a token from
 ```
