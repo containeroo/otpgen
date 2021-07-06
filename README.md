@@ -1,6 +1,6 @@
 # otpgen
 
-A small cli tool to generate TOTP (Time-based One-time Password) tokens.
+A small CLI tool to generate TOTP (Time-based One-time Password) tokens.
 
 ## Usage
 
