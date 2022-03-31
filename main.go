@@ -24,5 +24,10 @@ func main() {
 	if *secretKey == "" {
 		log.Fatal("secretkey cannot be empty")
 	}
+
+	if len(*secretKey) != 16 && len(*secretKey) != 32 {
+		log.Fatal("secretkey must be 16 or 32 characters long")
+	}
+
 	fmt.Print(gotp.NewDefaultTOTP(*secretKey).Now())
 }
