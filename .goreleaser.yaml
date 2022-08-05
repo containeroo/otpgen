@@ -26,7 +26,7 @@ brews:
     description: Simple CLI tool to generate OTP tokens
     license: GNU General Public License v3.0
     test: |
-      system "#{bin}/otpgen --version"
+      system "#{bin}/otpgen version"
     dependencies:
       - name: go
         type: optional
