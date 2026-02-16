@@ -1,0 +1,27 @@
+---
+name: lint
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: go.mod
+      - name: Verify formatting
+        run: test -z "$(gofmt -l .)"
+      - name: Run go vet
+        run: go vet ./...
+      - name: Run tests
+        run: go test ./...

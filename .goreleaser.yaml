@@ -10,33 +10,29 @@ builds:
     goos:
       - linux
       - darwin
-      - windows
     goarch:
       - amd64
       - arm64
-      - arm
-brews:
+archives:
+  - files:
+      - completions/*
+      - README*
+      - LICENSE*
+homebrew_casks:
   - name: otpgen
-    tap:
+    repository:
       owner: containeroo
       name: homebrew-tap
       token: "{{ .Env.TAP_GITHUB_TOKEN }}"
-    folder: Formula
+    directory: Casks
     homepage: https://containeroo.ch
     description: Simple CLI tool to generate OTP tokens
     license: GNU General Public License v3.0
-    test: |
-      system "#{bin}/otpgen version"
-    dependencies:
-      - name: go
-        type: optional
-    install: |-
-      bin.install "otpgen"
-
-      # Install bash completion
-      output = Utils.safe_popen_read(bin/"otpgen", "completion", "bash")
-      (bash_completion/"otpgen").write output
-
-      # Install zsh completion
-      output = Utils.safe_popen_read(bin/"otpgen", "completion", "zsh")
-      (zsh_completion/"_otpgen").write output
+    binaries:
+      - otpgen
+    completions:
+      bash: completions/otpgen.bash
+      zsh: completions/otpgen.zsh
+    hooks:
+      post:
+        - xattr -dr com.apple.quarantine "#{staged_path}/otpgen" || true
