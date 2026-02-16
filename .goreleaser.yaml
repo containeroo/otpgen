@@ -36,4 +36,7 @@ homebrew_casks:
       zsh: completions/otpgen.zsh
     hooks:
       post:
-        install: xattr -dr com.apple.quarantine "#{staged_path}/otpgen" || true
+        install: >-
+          system_command "/usr/bin/xattr",
+          args: ["-dr", "com.apple.quarantine", "#{staged_path}/otpgen"],
+          must_succeed: false
