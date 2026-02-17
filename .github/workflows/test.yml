@@ -1,16 +1,17 @@
 ---
-name: lint
+name: test
 
 on:
   pull_request:
     branches:
       - master
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,8 +20,9 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version-file: go.mod
+          cache: true
       - name: Verify formatting
-        run: test -z "$(gofmt -l .)"
+        run: test -z "$(gofmt -l $(git ls-files '*.go'))"
       - name: Run go vet
         run: go vet ./...
       - name: Run tests
