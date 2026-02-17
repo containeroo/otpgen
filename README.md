@@ -59,6 +59,8 @@ otpgen completion zsh
 otpgen completion powershell
 ```
 
+Release artifacts generate bash/zsh completion files during CI release builds. Completion files are not stored as static tracked files in this repository.
+
 ## Command Behavior
 
 - Input validation:
