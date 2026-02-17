@@ -4,6 +4,9 @@ project_name: otpgen
 before:
   hooks:
     - go mod tidy
+    - mkdir -p completions
+    - sh -c "go run . completion bash > completions/otpgen.bash"
+    - sh -c "go run . completion zsh > completions/otpgen.zsh"
 builds:
   - main: ./main.go
     env:
