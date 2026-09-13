@@ -70,7 +70,7 @@ func TestRunRootRejectsEmptySecret(t *testing.T) {
 
 func TestRunRootWrapsGenerationErrors(t *testing.T) {
 	originalGenerate := generateCode
-	generateCode = func(secret string, now time.Time) (string, error) {
+	generateCode = func(_ string, _ time.Time) (string, error) {
 		return "", errors.New("invalid secret")
 	}
 	t.Cleanup(func() {

@@ -3,10 +3,11 @@ package cmd
 import (
 	"errors"
 	"fmt"
-	"github.com/pquerna/otp/totp"
-	"github.com/spf13/cobra"
 	"strings"
 	"time"
+
+	"github.com/pquerna/otp/totp"
+	"github.com/spf13/cobra"
 )
 
 var (
@@ -46,6 +47,7 @@ func runRoot(cmd *cobra.Command, args []string) error {
 	return err
 }
 
+// Execute runs the otpgen command-line interface.
 func Execute() error {
 	return rootCmd.Execute()
 }

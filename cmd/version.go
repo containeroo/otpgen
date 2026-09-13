@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+
 	"github.com/spf13/cobra"
 )
 
@@ -12,8 +13,9 @@ func newVersionCmd() *cobra.Command {
 		Use:                   "version",
 		Short:                 "Print the version number of otpgen",
 		DisableFlagsInUseLine: true,
-		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Fprintln(cmd.OutOrStdout(), version)
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			_, err := fmt.Fprintln(cmd.OutOrStdout(), version)
+			return err
 		},
 	}
 }

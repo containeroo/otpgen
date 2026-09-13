@@ -1,3 +1,4 @@
+// Package cmd implements the otpgen command-line interface.
 package cmd
 
 import (
@@ -10,7 +11,7 @@ func newCompletionCmd() *cobra.Command {
 		Short:                 "Generate completion scripts",
 		DisableFlagsInUseLine: true,
 		ValidArgs:             []string{"bash", "zsh", "powershell"},
-		Args:                  cobra.ExactValidArgs(1),
+		Args:                  cobra.MatchAll(cobra.ExactArgs(1), cobra.OnlyValidArgs),
 		RunE:                  runCompletion,
 	}
 }

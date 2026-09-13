@@ -1,9 +1,11 @@
+// Command otpgen generates time-based one-time passwords.
 package main
 
 import (
 	"fmt"
-	"github.com/containeroo/otpgen/cmd"
 	"os"
+
+	"github.com/containeroo/otpgen/cmd"
 )
 
 func main() {
